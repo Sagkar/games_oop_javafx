@@ -1,10 +1,10 @@
 package ru.job4j.chess.firuges.black;
 
 import org.junit.Test;
-import ru.job4j.chess.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 public class BishopBlackTest {
@@ -24,11 +24,11 @@ public class BishopBlackTest {
         assertThat(out, is(expected));
     }
 
-    @Test(expected = ImpossibleMoveException.class)
+    @Test
     public void dontHasDiagonal() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
         Cell position = bishopBlack.position();
-        bishopBlack.isDiagonal(position, Cell.H1);
+        assertFalse(bishopBlack.isDiagonal(position, Cell.H1));
     }
 
     @Test
